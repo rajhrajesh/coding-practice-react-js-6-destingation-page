@@ -1,10 +1,14 @@
 import {Component} from 'react'
+
 import DestinationItem from '../DestinationItem'
 
 import './index.css'
 
 class DestinationSearch extends Component {
-  state = {searchInput: ''}
+  state = {
+    searchInput: '',
+  }
+
   onChangeSearchInput = event => {
     this.setState({searchInput: event.target.value})
   }
@@ -15,6 +19,7 @@ class DestinationSearch extends Component {
     const searchResults = destinationsList.filter(eachDestination =>
       eachDestination.name.toLowerCase().includes(searchInput.toLowerCase()),
     )
+
     return (
       <div className="app-container">
         <div className="destinations-search-container">
@@ -34,12 +39,12 @@ class DestinationSearch extends Component {
             />
           </div>
           <ul className="destinations-list">
-            {searchResults.map(eachDestiny => {
+            {searchResults.map(eachDestination => (
               <DestinationItem
-                destinationDetails={eachDestiny}
-                key={eachDestiny.id}
+                key={eachDestination.id}
+                destinationDetails={eachDestination}
               />
-            })}
+            ))}
           </ul>
         </div>
       </div>
